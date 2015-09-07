@@ -4,8 +4,13 @@ Rails.application.routes.draw do
 
   root "pins#index"
 
+  get     'login'   => "sessions#new"
+  post    'login'   => "sessions#create"
+  delete  'logout'  => "sessions#destroy"
+
   resources :pins
   resources :users
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
