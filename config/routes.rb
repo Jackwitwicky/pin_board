@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root "pins#index"
 
   resources :pins
+  resources :users
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
