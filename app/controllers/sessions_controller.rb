@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    session[:previous_pin_page] = request.env['HTTP_REFERER']
   end
 
   def create
@@ -8,15 +9,21 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:session][:password])
       log_in(user)
+      if params[:session][:remember_me] == '1'
+        remember(user)
+      else
+        forget(user)
+      end
       flash[:success] = "You have been logged in"
-      redirect_to user
+      redirect_to session[:previous_pin_page]
     else
+      flash[:danger] = "Invalid email/password combination"
       render 'new'
     end
   end
 
   def destroy
-    log_out
+    log_out if logged_in?
     flash[:success] = "You have been logged out"
     redirect_to root_path
   end

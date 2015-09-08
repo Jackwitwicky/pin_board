@@ -1,19 +1,19 @@
 <header>
   <div class="nav navbar-default">
-    <nav>
-      <%= link_to "Pin Board", root_path %>
-    </nav>
+    <div class="container">
+      <%= link_to "Pin Board", root_path, id: "logo" %>
 
-    <div class="nav">
-      <ul>
-        <% if logged_in? %>
-            <li><%= link_to "New Pin", new_pin_path %></li>
-            <li><%= link_to "Logout", logout_path, method: :delete %></li>
-        <% else %>
-            <li><%= link_to "Login", login_path %></li>
-        <% end %>
-        <li><%= link_to "About", "#" %></li>
-      </ul>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <% if logged_in? %>
+              <li><%= link_to "New Pin", new_pin_path %></li>
+              <li><%= link_to "Logout", logout_path, method: :delete %></li>
+          <% else %>
+              <li><%= link_to "Login", login_path %></li>
+          <% end %>
+          <li><%= link_to "About", "#" %></li>
+        </ul>
+      </nav>
     </div>
   </div>
 </header>

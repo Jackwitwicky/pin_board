@@ -1,0 +1,38 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+body {
+  background: rgb(235, 238, 243 );
+}
+
+p {
+  font-weight: normal;
+  font-size: 1.1em;
+  line-height: 1.1em;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  padding-bottom: 30px;
+}
+
+/* navbar */
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  padding-top: 9px;
+  font-weight: bold;
+  text-transform: uppercase;
+  &:hover {
+    color: plum;
+    text-decoration: none;
+  }
+}
+
+/* alerts */
+.alert {
+  margin-top: 20px;
+}
