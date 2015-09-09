@@ -1,4 +1,6 @@
 class PinsController < ApplicationController
+  before_action :log_in_required, except: [:index, :show]
+
   def index
     @pin = Pin.all.order("created_at DESC")
   end
@@ -47,6 +49,6 @@ class PinsController < ApplicationController
 
   private
     def pin_params
-      params.require(:pin).permit(:title, :description)
+      params.require(:pin).permit(:title, :description, :image)
     end
 end

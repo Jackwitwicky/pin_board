@@ -25,6 +25,9 @@
           <%= f.text_area :description, class: "form-control" %>
         </div>
         <div class="form-group">
+          <%= f.file_field :image %>
+        </div>
+        <div class="form-group">
           <%= f.submit "Save Pin", class: "btn btn-success" %>
         </div>
       </div>

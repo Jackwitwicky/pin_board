@@ -4,8 +4,13 @@
   <h2><%= @pin.title %></h2>
 </p>
 
+<%= image_tag @pin.image.url(:medium) %>
 <p>
   <%= @pin.description %>
 </p>
 
+<p>
+  <%= link_to "Edit", edit_pin_path(@pin) %>
+  <%= link_to "Delete", pin_path(@pin), method: :delete , data: {confirm: "Are you sure?"} %>
+</p>
 <%= link_to "Back", root_path %>
