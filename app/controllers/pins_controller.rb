@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-  before_action :log_in_required, except: [:index, :show]
+  before_action :log_in_required, except: [:index, :show, :about]
 
   def index
     @pin = Pin.all.order("created_at DESC")
@@ -45,6 +45,17 @@ class PinsController < ApplicationController
 
     flash[:success] = "Your pin has been deleted"
     redirect_to root_path
+  end
+
+  def about
+
+  end
+
+  def upvote
+    @pin = Pin.find_by(id: params[:id])
+    @pin.liked_by current_user
+
+    redirect_to :back
   end
 
   private

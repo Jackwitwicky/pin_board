@@ -21,9 +21,14 @@
             <div class="user">
               Submitted by <%= @pin.user.name %>
               <div class="pull-right">
-                <%= link_to "Edit", edit_pin_path(@pin), class: "btn btn-sm btn-default" %>
-                <%= link_to "Delete", pin_path(@pin), method: :delete , data: {confirm: "Are you sure?"},
-                            class: "btn btn-sm btn-default" %>
+                <%= link_to like_pin_path, class: "btn btn-default" do %>
+                    <span class="glyphicon glyphicon-heart"> <%= @pin.get_likes.size %></span>
+                <% end %>
+                <% if logged_in? && @pin.user == current_user %>
+                    <%= link_to "Edit", edit_pin_path(@pin), class: "btn btn-sm btn-default" %>
+                    <%= link_to "Delete", pin_path(@pin), method: :delete , data: {confirm: "Are you sure?"},
+                                class: "btn btn-sm btn-default" %>
+                <% end %>
               </div>
             </div>
         </div>
@@ -31,6 +36,3 @@
     </div>
   </div>
 </div>
-
-<p>
-</p>

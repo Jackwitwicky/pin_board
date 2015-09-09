@@ -1,12 +1,18 @@
-<h1>Welcome to the homepage.</h1>
+<h1>Two guys walk into a bar...</h1>
 
 <div id="pins">
-  <% @pin.each do |pin| %>
-      <div class="box panel panel-default">
-        <%= link_to (image_tag pin.image.url), pin %>
-        <div class="panel-body">
-          <h2><%= link_to pin.title, pin %></h2>
-        </div>
+  <% @pin.each_slice(3) do |pins| %>
+      <div class="row">
+        <% pins.each do |pin| %>
+            <div class="col-md-4">
+              <div class="box panel panel-default">
+                <%= link_to (image_tag pin.image.url), pin %>
+                <div class="panel-body">
+                  <h2><%= link_to pin.title, pin %></h2>
+                </div>
+              </div>
+            </div>
+        <% end %>
       </div>
   <% end %>
 </div>

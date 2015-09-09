@@ -8,7 +8,14 @@ Rails.application.routes.draw do
   post    'login'   => "sessions#create"
   delete  'logout'  => "sessions#destroy"
 
-  resources :pins
+  get 'about' => "pins#about"
+
+  resources :pins do
+    member do
+      get 'like'  => "pins#upvote"
+      post 'like' => "pins#upvote"
+    end
+  end
   resources :users
 
   # Example of regular route:
