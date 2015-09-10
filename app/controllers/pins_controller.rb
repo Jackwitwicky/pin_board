@@ -53,7 +53,12 @@ class PinsController < ApplicationController
 
   def upvote
     @pin = Pin.find_by(id: params[:id])
-    @pin.liked_by current_user
+    if current_user.liked? @pin
+      flash[:warning] = "Looks like you've already liked this pin"
+    else
+      @pin.liked_by current_user
+      flash[:info] = "You have liked this pin"
+    end
 
     redirect_to :back
   end

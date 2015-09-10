@@ -21,13 +21,20 @@
             <div class="user">
               Submitted by <%= @pin.user.name %>
               <div class="pull-right">
-                <%= link_to like_pin_path, class: "btn btn-default" do %>
-                    <span class="glyphicon glyphicon-heart"> <%= @pin.get_likes.size %></span>
-                <% end %>
-                <% if logged_in? && @pin.user == current_user %>
-                    <%= link_to "Edit", edit_pin_path(@pin), class: "btn btn-sm btn-default" %>
-                    <%= link_to "Delete", pin_path(@pin), method: :delete , data: {confirm: "Are you sure?"},
-                                class: "btn btn-sm btn-default" %>
+                <% if logged_in? %>
+                    <%= link_to like_pin_path, class: "btn btn-default" do %>
+                        <% if current_user.liked? @pin %>
+                            <span class="glyphicon glyphicon-heart"> <%= @pin.get_likes.size %></span>
+                        <% else %>
+                            <span class="glyphicon glyphicon-heart-empty"> <%= @pin.get_likes.size %></span>
+                        <% end %>
+                    <% end %>
+
+                    <% if current_user == @pin.user %>
+                        <%= link_to "Edit", edit_pin_path(@pin), class: "btn btn-sm btn-default" %>
+                        <%= link_to "Delete", pin_path(@pin), method: :delete , data: {confirm: "Are you sure?"},
+                                 class: "btn btn-sm btn-default" %>
+                    <% end %>
                 <% end %>
               </div>
             </div>
