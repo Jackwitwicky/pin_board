@@ -15,7 +15,11 @@ class SessionsController < ApplicationController
         forget(user)
       end
       flash[:success] = "You have been logged in"
-      redirect_to session[:previous_pin_page]
+      if session[:previous_pin_page]
+        redirect_to session[:previous_pin_page]
+      else
+        redirect_to user
+      end
     else
       flash[:danger] = "Invalid email/password combination"
       render 'new'

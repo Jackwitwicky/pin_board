@@ -103,3 +103,58 @@ h1 {
 blockquote {
   margin-top: 180px;
 }
+
+/* user-edit page */
+#pin_edit {
+  margin-top: 60px;
+
+  p {
+    font-size: medium;
+  }
+}
+
+/* user-show page */
+.pin {
+  border-radius: 5px;
+
+  .image-wrapper {
+    max-width: 100%;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+
+    &:hover {
+      transform: scale(1.25);
+    }
+  }
+}
+
+.recent-likes {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 20px;
+  padding-left: 15px;
+  background-color: white;
+  font-size: 18px;
+
+  #pin-link {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .time {
+    font-size: 13px;
+  }
+}
+
+.featurette-divider {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

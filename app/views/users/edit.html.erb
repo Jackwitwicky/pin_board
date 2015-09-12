@@ -1,5 +1,28 @@
-<h1>Change your settings</h1>
 
-<%= render 'users/form' %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div id="pin_edit">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="text-center">Change Settings</h1>
+        </div>
+        <div class="panel-body">
+          <%= render 'users/form' %>
+        </div>
+
+        <div class="panel-footer">
+          <h3>Delete Account</h3>
+          <p>
+            Deleting your account will result in your pins and comments being deleted.
+            <span class="text-danger"><strong>Be Warned</strong></span>
+            This action cannot be reverted.
+          </p>
+          <%= link_to "Delete", user_path(@user), method: :delete, data: {confirm: "Are you sure?"},
+                      class: "btn btn-lg btn-warning" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= link_to "Cancel", :back, class: "btn btn-warning" %>

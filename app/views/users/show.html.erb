@@ -1,9 +1,39 @@
 <h1>Your corner of the Pin Sphere</h1>
 
-<p><%= @user.name %></p>
+<div class="row">
+  <h2>You own <%= pluralize(@user.pins.count, "pin") %></h2>
+  <div class="panel panel-default">
+    <div class="panel-footer">
+      <div class="row">
+        <% @user.pins.each do |pin| %>
+            <div class="col-md-4">
+              <div class="pin">
+                <div class="image-wrapper">
+                    <%= link_to pin do
+                       image_tag pin.image.url(:medium)
+                    end %>
+                </div>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <%= @user.email %>
-</p>
+<h2>Recent Likes</h2>
 
-<%= link_to "Take Me Home", root_path %>
+<div class="row recent-likes">
+  <% if @user.votes.any? %>
+      <% @user.votes.order("created_at DESC").each do |vote| %>
+          <% pin = Pin.find(vote.votable_id) %>
+          You liked <strong><%= link_to pin.title, pin, id: "pin-link" %></strong><br>
+          <span class="time"><%= time_ago_in_words(vote.created_at) %> ago</span>
+          <hr class="featurette-divider">
+      <% end %>
+  <% else %>
+      <p>You haven't liked anything yet.</p>
+  <% end %>
+</div>
+
+<%= link_to "Take Me Home", root_path, class: "btn btn-default" %>
